@@ -43,8 +43,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewPokemons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPokemons.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewPokemons.Location = new System.Drawing.Point(26, 43);
             this.dataGridViewPokemons.Name = "dataGridViewPokemons";
+            this.dataGridViewPokemons.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewPokemons.Size = new System.Drawing.Size(536, 334);
             this.dataGridViewPokemons.TabIndex = 0;
             this.dataGridViewPokemons.SelectionChanged += new System.EventHandler(this.dataGridViewPokemons_SelectionChanged);
@@ -77,6 +79,7 @@
             this.buttonAgregar.TabIndex = 3;
             this.buttonAgregar.Text = "Agregar";
             this.buttonAgregar.UseVisualStyleBackColor = false;
+            this.buttonAgregar.Click += new System.EventHandler(this.buttonAgregar_Click);
             // 
             // buttonEliminar
             // 
@@ -94,7 +97,6 @@
             this.buttonEliminar.TabIndex = 4;
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.UseVisualStyleBackColor = false;
-            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
             // 
             // buttonSalir
             // 

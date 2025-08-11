@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PokedexWinforms
+namespace Dominio
 {
-    class Elemento
+    public class Elemento
     {
         public int Id { get; set; }
         public string Descripcion { get; set; }

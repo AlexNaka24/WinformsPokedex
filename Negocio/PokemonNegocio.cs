@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using Dominio;
+using System.Security.Cryptography.X509Certificates;
 
-namespace PokedexWinforms
+namespace Negocio
 {
-    class PokemonNegocio
+    public class PokemonNegocio
     {
         public List<Pokemon> listar()
         {
@@ -37,7 +39,12 @@ namespace PokedexWinforms
                     pokemonAux.Numero = (int)lectorDB["Numero"];
                     pokemonAux.Nombre = (string)lectorDB["Nombre"];
                     pokemonAux.Descripcion = (string)lectorDB["Descripcion"];
-                    pokemonAux.UrlImagen = (string)lectorDB["UrlImagen"];
+
+                    if (lectorDB.IsDBNull(lectorDB.GetOrdinal("UrlImagen")))
+                        pokemonAux.UrlImagen = null;
+                    else
+                        pokemonAux.UrlImagen = (string)lectorDB["UrlImagen"];
+
                     pokemonAux.Tipo = new Elemento();
                     pokemonAux.Tipo.Descripcion = (string)lectorDB["Tipo"];
                     pokemonAux.Debilidad = new Elemento();
@@ -52,6 +59,28 @@ namespace PokedexWinforms
             catch (Exception)
             {
                 throw;
+            }          
+        }
+
+        public void agregar(Pokemon nuevoPokemon)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setConsulta($"INSERT INTO POKEMONS(Numero, Nombre, Descripcion, Activo, IdTipo, IdDebilidad, UrlImagen) VALUES ({nuevoPokemon.Numero}, '{nuevoPokemon.Nombre}', '{nuevoPokemon.Descripcion}', 1, @idTipo, @idDebilidad, @urlImagen)");
+                datos.setearParametro("@idTipo", nuevoPokemon.Tipo.Id);
+                datos.setearParametro("@idDebilidad", nuevoPokemon.Debilidad.Id);
+                datos.setearParametro("@urlImagen", nuevoPokemon.UrlImagen);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
             }
         }
     }
