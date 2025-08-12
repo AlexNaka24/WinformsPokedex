@@ -43,7 +43,6 @@
             this.labelUrlImagen = new System.Windows.Forms.Label();
             this.textBoxUrlImagen = new System.Windows.Forms.TextBox();
             this.pictureBoxPokemon = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPokemon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -183,24 +182,12 @@
             this.pictureBoxPokemon.TabIndex = 14;
             this.pictureBoxPokemon.TabStop = false;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Perpetua Titling MT", 27.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(79, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(431, 44);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Agregar Pokemon";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // FormAltaPokemon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LemonChiffon;
             this.ClientSize = new System.Drawing.Size(586, 414);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBoxPokemon);
             this.Controls.Add(this.textBoxUrlImagen);
             this.Controls.Add(this.labelUrlImagen);
@@ -247,6 +234,5 @@
         private System.Windows.Forms.Label labelUrlImagen;
         private System.Windows.Forms.TextBox textBoxUrlImagen;
         private System.Windows.Forms.PictureBox pictureBoxPokemon;
-        private System.Windows.Forms.Label label1;
     }
 }

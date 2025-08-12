@@ -33,6 +33,7 @@
             this.buttonAgregar = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.buttonSalir = new System.Windows.Forms.Button();
+            this.buttonModificar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPokemons)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPokemon)).BeginInit();
             this.SuspendLayout();
@@ -91,7 +92,7 @@
             this.buttonEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEliminar.Font = new System.Drawing.Font("Myanmar Text", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonEliminar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonEliminar.Location = new System.Drawing.Point(184, 383);
+            this.buttonEliminar.Location = new System.Drawing.Point(410, 383);
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(152, 38);
             this.buttonEliminar.TabIndex = 4;
@@ -114,12 +115,29 @@
             this.buttonSalir.UseVisualStyleBackColor = false;
             this.buttonSalir.Click += new System.EventHandler(this.buttonSalir_Click);
             // 
+            // buttonModificar
+            // 
+            this.buttonModificar.BackColor = System.Drawing.Color.Wheat;
+            this.buttonModificar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonModificar.FlatAppearance.BorderSize = 2;
+            this.buttonModificar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.HotTrack;
+            this.buttonModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonModificar.Font = new System.Drawing.Font("Myanmar Text", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonModificar.Location = new System.Drawing.Point(184, 383);
+            this.buttonModificar.Name = "buttonModificar";
+            this.buttonModificar.Size = new System.Drawing.Size(152, 38);
+            this.buttonModificar.TabIndex = 6;
+            this.buttonModificar.Text = "Modificar";
+            this.buttonModificar.UseVisualStyleBackColor = false;
+            this.buttonModificar.Click += new System.EventHandler(this.buttonModificar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(948, 462);
+            this.Controls.Add(this.buttonModificar);
             this.Controls.Add(this.buttonSalir);
             this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.buttonAgregar);
@@ -146,6 +164,7 @@
         private System.Windows.Forms.Button buttonAgregar;
         private System.Windows.Forms.Button buttonEliminar;
         private System.Windows.Forms.Button buttonSalir;
+        private System.Windows.Forms.Button buttonModificar;
     }
 }
 

@@ -15,9 +15,19 @@ namespace PokedexWinforms
 {
     public partial class FormAltaPokemon : Form
     {
+        private Pokemon pokemon = null;
+
         public FormAltaPokemon()
         {
             InitializeComponent();
+        }
+
+        public FormAltaPokemon(Pokemon pokemon)
+        {
+            InitializeComponent();
+            this.pokemon = pokemon;
+            Text = "Modificar Pokemon";
+            
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
@@ -27,20 +37,29 @@ namespace PokedexWinforms
 
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
-            Pokemon poke = new Pokemon();
-
+            PokemonNegocio negocio = new PokemonNegocio();
             try
             {
-                poke.Numero = int.Parse(textBoxNumero.Text);
-                poke.Nombre = textBoxNombre.Text;
-                poke.Descripcion = textBoxDescripcion.Text;
-                poke.UrlImagen = textBoxUrlImagen.Text;
-                poke.Tipo = (Elemento)comboBoxTipo.SelectedItem;
-                poke.Debilidad = (Elemento)comboBoxDebilidad.SelectedItem;
+                if (pokemon == null)
+                    pokemon = new Pokemon();
 
-                PokemonNegocio negocio = new PokemonNegocio();
-                negocio.agregar(poke);
-                MessageBox.Show("Pokemon agregado correctamente");
+                // Solo actualiza los campos, el Id se mantiene
+                pokemon.Numero = int.Parse(textBoxNumero.Text);
+                pokemon.Nombre = textBoxNombre.Text;
+                pokemon.Descripcion = textBoxDescripcion.Text;
+                pokemon.UrlImagen = textBoxUrlImagen.Text;
+                pokemon.Tipo = (Elemento)comboBoxTipo.SelectedItem;
+                pokemon.Debilidad = (Elemento)comboBoxDebilidad.SelectedItem;
+
+                if (pokemon.Id != 0)
+                {
+                    negocio.modificar(pokemon);
+                }
+                else
+                {
+                    negocio.agregar(pokemon);
+                }
+
                 Close();
             }
             catch (Exception)
@@ -56,7 +75,22 @@ namespace PokedexWinforms
             try
             {
                 comboBoxTipo.DataSource = elementoNegocio.listar();
+                comboBoxTipo.ValueMember = "Id";
+                comboBoxTipo.DisplayMember = "Descripcion";
                 comboBoxDebilidad.DataSource = elementoNegocio.listar();
+                comboBoxDebilidad.ValueMember = "Id";
+                comboBoxDebilidad.DisplayMember = "Descripcion";
+
+                if (pokemon != null)
+                {
+                    textBoxNumero.Text = pokemon.Numero.ToString();
+                    textBoxNombre.Text = pokemon.Nombre;
+                    textBoxDescripcion.Text = pokemon.Descripcion;
+                    textBoxUrlImagen.Text = pokemon.UrlImagen;
+                    cargarImagen(pokemon.UrlImagen);    
+                    comboBoxTipo.SelectedValue = pokemon.Tipo.Id;
+                    comboBoxDebilidad.SelectedValue = pokemon.Debilidad.Id;
+                }
             }
             catch (Exception)
             {

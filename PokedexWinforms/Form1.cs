@@ -28,7 +28,13 @@ namespace PokedexWinforms
 
         private void dataGridViewPokemons_SelectionChanged(object sender, EventArgs e)
         {
+            if (dataGridViewPokemons.CurrentRow == null)
+                return;
+
             Pokemon seleccionado = (Pokemon)dataGridViewPokemons.CurrentRow.DataBoundItem;
+            if (seleccionado == null)
+                return;
+
             cargarImagen(seleccionado.UrlImagen);
 
             Elemento elemento = new Elemento();
@@ -57,8 +63,9 @@ namespace PokedexWinforms
             listaPokemons = negocio.listar();
             dataGridViewPokemons.DataSource = listaPokemons;
             dataGridViewPokemons.Columns["UrlImagen"].Visible = false;
+            dataGridViewPokemons.Columns["Id"].Visible = false;
 
-            pictureBoxPokemon.Load(listaPokemons[0].UrlImagen);
+            pictureBoxPokemon.Load("https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png");
         }
 
         private void buttonSalir_Click(object sender, EventArgs e)
@@ -71,6 +78,16 @@ namespace PokedexWinforms
         {
             FormAltaPokemon formAlta = new FormAltaPokemon();
             formAlta.ShowDialog();
+            Cargar();
+        }
+
+        private void buttonModificar_Click(object sender, EventArgs e)
+        {
+            Pokemon seleccionado;
+            seleccionado = (Pokemon)dataGridViewPokemons.CurrentRow.DataBoundItem;
+
+            FormAltaPokemon modificar = new FormAltaPokemon(seleccionado);
+            modificar.ShowDialog();
             Cargar();
         }
     }   
