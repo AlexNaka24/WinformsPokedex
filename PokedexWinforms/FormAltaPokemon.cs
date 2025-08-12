@@ -54,10 +54,12 @@ namespace PokedexWinforms
                 if (pokemon.Id != 0)
                 {
                     negocio.modificar(pokemon);
+                    MessageBox.Show("Modificado exitosamente");
                 }
                 else
                 {
                     negocio.agregar(pokemon);
+                    MessageBox.Show("Agregado exitosamente");
                 }
 
                 Close();
