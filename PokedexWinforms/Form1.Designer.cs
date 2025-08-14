@@ -34,6 +34,7 @@
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.buttonSalir = new System.Windows.Forms.Button();
             this.buttonModificar = new System.Windows.Forms.Button();
+            this.buttonEliminarLogico = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPokemons)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPokemon)).BeginInit();
             this.SuspendLayout();
@@ -74,7 +75,7 @@
             this.buttonAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.HotTrack;
             this.buttonAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAgregar.Font = new System.Drawing.Font("Myanmar Text", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAgregar.Location = new System.Drawing.Point(26, 383);
+            this.buttonAgregar.Location = new System.Drawing.Point(12, 383);
             this.buttonAgregar.Name = "buttonAgregar";
             this.buttonAgregar.Size = new System.Drawing.Size(152, 38);
             this.buttonAgregar.TabIndex = 3;
@@ -92,12 +93,13 @@
             this.buttonEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEliminar.Font = new System.Drawing.Font("Myanmar Text", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonEliminar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonEliminar.Location = new System.Drawing.Point(410, 383);
+            this.buttonEliminar.Location = new System.Drawing.Point(328, 383);
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(152, 38);
             this.buttonEliminar.TabIndex = 4;
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.UseVisualStyleBackColor = false;
+            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
             // 
             // buttonSalir
             // 
@@ -123,7 +125,7 @@
             this.buttonModificar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.HotTrack;
             this.buttonModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonModificar.Font = new System.Drawing.Font("Myanmar Text", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonModificar.Location = new System.Drawing.Point(184, 383);
+            this.buttonModificar.Location = new System.Drawing.Point(170, 383);
             this.buttonModificar.Name = "buttonModificar";
             this.buttonModificar.Size = new System.Drawing.Size(152, 38);
             this.buttonModificar.TabIndex = 6;
@@ -131,12 +133,31 @@
             this.buttonModificar.UseVisualStyleBackColor = false;
             this.buttonModificar.Click += new System.EventHandler(this.buttonModificar_Click);
             // 
+            // buttonEliminarLogico
+            // 
+            this.buttonEliminarLogico.BackColor = System.Drawing.Color.OrangeRed;
+            this.buttonEliminarLogico.Cursor = System.Windows.Forms.Cursors.Default;
+            this.buttonEliminarLogico.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonEliminarLogico.FlatAppearance.BorderSize = 2;
+            this.buttonEliminarLogico.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.HotTrack;
+            this.buttonEliminarLogico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEliminarLogico.Font = new System.Drawing.Font("Myanmar Text", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEliminarLogico.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonEliminarLogico.Location = new System.Drawing.Point(486, 383);
+            this.buttonEliminarLogico.Name = "buttonEliminarLogico";
+            this.buttonEliminarLogico.Size = new System.Drawing.Size(166, 38);
+            this.buttonEliminarLogico.TabIndex = 7;
+            this.buttonEliminarLogico.Text = "Eliminar Logico";
+            this.buttonEliminarLogico.UseVisualStyleBackColor = false;
+            this.buttonEliminarLogico.Click += new System.EventHandler(this.buttonEliminarLogico_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(948, 462);
+            this.Controls.Add(this.buttonEliminarLogico);
             this.Controls.Add(this.buttonModificar);
             this.Controls.Add(this.buttonSalir);
             this.Controls.Add(this.buttonEliminar);
@@ -165,6 +186,7 @@
         private System.Windows.Forms.Button buttonEliminar;
         private System.Windows.Forms.Button buttonSalir;
         private System.Windows.Forms.Button buttonModificar;
+        private System.Windows.Forms.Button buttonEliminarLogico;
     }
 }
 

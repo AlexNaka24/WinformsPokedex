@@ -58,6 +58,7 @@ namespace PokedexWinforms
             buttonAgregar.Cursor = Cursors.Hand;
             buttonEliminar.Cursor = Cursors.Hand;
             buttonSalir.Cursor = Cursors.Hand;
+            buttonModificar.Cursor = Cursors.Hand;
 
             PokemonNegocio negocio = new PokemonNegocio();
             listaPokemons = negocio.listar();
@@ -65,7 +66,7 @@ namespace PokedexWinforms
             dataGridViewPokemons.Columns["UrlImagen"].Visible = false;
             dataGridViewPokemons.Columns["Id"].Visible = false;
 
-            pictureBoxPokemon.Load("https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png");
+            pictureBoxPokemon.Load();
         }
 
         private void buttonSalir_Click(object sender, EventArgs e)
@@ -89,6 +90,52 @@ namespace PokedexWinforms
             FormAltaPokemon modificar = new FormAltaPokemon(seleccionado);
             modificar.ShowDialog();
             Cargar();
+        }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+            eliminar(false);
+        }
+
+        private void buttonEliminarLogico_Click(object sender, EventArgs e)
+        {
+            eliminar(true);
+        }
+
+        private void eliminar(bool logico = false)
+        {
+            PokemonNegocio pokemonNegocio = new PokemonNegocio();
+            Pokemon pokemonSeleccionado;
+
+            try
+            {
+                var resultado = MessageBox.Show(
+                    "¿Seguro que desea eliminar el pokemon seleccionado?",
+                    "Eliminando",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (resultado == DialogResult.Yes)
+                {
+                    pokemonSeleccionado = (Pokemon)dataGridViewPokemons.CurrentRow.DataBoundItem;
+
+                    if (logico)
+                        pokemonNegocio.eliminarLogico(pokemonSeleccionado.Id);
+                    else
+                        pokemonNegocio.eliminarFisico(pokemonSeleccionado.Id);
+
+                    Cargar();
+                }
+                else if (resultado == DialogResult.No)
+                {
+                    Cargar();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Seleccione algun pokemon");
+            }
         }
     }   
 }
