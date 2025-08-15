@@ -5,17 +5,20 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
+using System.Configuration;
 
 namespace PokedexWinforms
 {
     public partial class FormAltaPokemon : Form
     {
         private Pokemon pokemon = null;
+        private OpenFileDialog archivo = null;
 
         public FormAltaPokemon()
         {
@@ -53,14 +56,86 @@ namespace PokedexWinforms
 
                 if (pokemon.Id != 0)
                 {
-                    negocio.modificar(pokemon);
-                    MessageBox.Show("Modificado exitosamente");
+                    if (string.IsNullOrWhiteSpace(textBoxNombre.Text))
+                    {
+                        MessageBox.Show("El nombre es obligatorio");
+                        return;
+                    }
+                    else if (string.IsNullOrWhiteSpace(textBoxDescripcion.Text))
+                    {
+                        MessageBox.Show("La descripción es obligatoria");
+                        return;
+                    }
+                    else if (string.IsNullOrWhiteSpace(textBoxUrlImagen.Text))
+                    {
+                        MessageBox.Show("La URL de la imagen es obligatoria");
+                        return;
+                    }
+                    else if (comboBoxTipo.SelectedItem == null)
+                    {
+                        MessageBox.Show("El tipo es obligatorio");
+                        return;
+                    }
+                    else if (comboBoxDebilidad.SelectedItem == null)
+                    {
+                        MessageBox.Show("La debilidad es obligatoria");
+                        return;
+                    }
+                    else if (pokemon.Numero <= 0)
+                    {
+                        MessageBox.Show("El número debe ser mayor a 0");
+                        return;
+                    }
+                    else
+                    {
+                        negocio.modificar(pokemon);
+                        MessageBox.Show("Modificado exitosamente");
+                    }                    
                 }
                 else
                 {
-                    negocio.agregar(pokemon);
-                    MessageBox.Show("Agregado exitosamente");
+                    if (string.IsNullOrWhiteSpace(textBoxNombre.Text))
+                    {
+                        MessageBox.Show("El nombre es obligatorio");
+                        return;
+                    }
+                    else if (string.IsNullOrWhiteSpace(textBoxDescripcion.Text))
+                    {
+                        MessageBox.Show("La descripción es obligatoria");
+                        return;
+                    }
+                    else if (string.IsNullOrWhiteSpace(textBoxUrlImagen.Text))
+                    {
+                        MessageBox.Show("La URL de la imagen es obligatoria");
+                        return;
+                    }
+                    else if (comboBoxTipo.SelectedItem == null)
+                    {
+                        MessageBox.Show("El tipo es obligatorio");
+                        return;
+                    }
+                    else if (comboBoxDebilidad.SelectedItem == null)
+                    {
+                        MessageBox.Show("La debilidad es obligatoria");
+                        return;
+                    }
+                    else if (pokemon.Numero <= 0)
+                    {
+                        MessageBox.Show("El número debe ser mayor a 0");
+                        return;
+                    }
+                    else
+                    {
+                        negocio.agregar(pokemon);
+                        MessageBox.Show("Agregado exitosamente");
+                    }                  
                 }
+
+                //guardar imagen si levanto localmente
+                if (archivo != null && !(textBoxUrlImagen.Text.ToUpper().Contains("HTTP")))
+                {
+                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["images-folder"] + archivo.SafeFileName);
+                }        
 
                 Close();
             }
@@ -115,6 +190,18 @@ namespace PokedexWinforms
         private void textBoxUrlImagen_Leave(object sender, EventArgs e)
         {
             cargarImagen(textBoxUrlImagen.Text);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            archivo = new OpenFileDialog();
+            archivo.Filter = "jpg|*.jpg;|png|*.png";
+
+            if (archivo.ShowDialog() == DialogResult.OK)
+            {
+                textBoxUrlImagen.Text = archivo.FileName;
+                cargarImagen(archivo.FileName);               
+            }
         }
     }
 }

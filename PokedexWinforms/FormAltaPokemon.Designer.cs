@@ -43,6 +43,7 @@
             this.labelUrlImagen = new System.Windows.Forms.Label();
             this.textBoxUrlImagen = new System.Windows.Forms.TextBox();
             this.pictureBoxPokemon = new System.Windows.Forms.PictureBox();
+            this.buttonAgregar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPokemon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -175,19 +176,30 @@
             // 
             this.pictureBoxPokemon.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pictureBoxPokemon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxPokemon.Location = new System.Drawing.Point(336, 113);
+            this.pictureBoxPokemon.Location = new System.Drawing.Point(375, 116);
             this.pictureBoxPokemon.Name = "pictureBoxPokemon";
             this.pictureBoxPokemon.Size = new System.Drawing.Size(213, 181);
             this.pictureBoxPokemon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxPokemon.TabIndex = 14;
             this.pictureBoxPokemon.TabStop = false;
             // 
+            // buttonAgregar
+            // 
+            this.buttonAgregar.Location = new System.Drawing.Point(278, 274);
+            this.buttonAgregar.Name = "buttonAgregar";
+            this.buttonAgregar.Size = new System.Drawing.Size(57, 23);
+            this.buttonAgregar.TabIndex = 15;
+            this.buttonAgregar.Text = "Browser";
+            this.buttonAgregar.UseVisualStyleBackColor = true;
+            this.buttonAgregar.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormAltaPokemon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LemonChiffon;
-            this.ClientSize = new System.Drawing.Size(586, 414);
+            this.ClientSize = new System.Drawing.Size(662, 416);
+            this.Controls.Add(this.buttonAgregar);
             this.Controls.Add(this.pictureBoxPokemon);
             this.Controls.Add(this.textBoxUrlImagen);
             this.Controls.Add(this.labelUrlImagen);
@@ -204,9 +216,9 @@
             this.Controls.Add(this.labelNombre);
             this.Controls.Add(this.labelNumero);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(800, 453);
+            this.MaximumSize = new System.Drawing.Size(678, 455);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(413, 453);
+            this.MinimumSize = new System.Drawing.Size(678, 455);
             this.Name = "FormAltaPokemon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo pokemon";
@@ -234,5 +246,6 @@
         private System.Windows.Forms.Label labelUrlImagen;
         private System.Windows.Forms.TextBox textBoxUrlImagen;
         private System.Windows.Forms.PictureBox pictureBoxPokemon;
+        private System.Windows.Forms.Button buttonAgregar;
     }
 }
