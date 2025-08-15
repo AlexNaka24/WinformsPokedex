@@ -35,6 +35,8 @@
             this.buttonSalir = new System.Windows.Forms.Button();
             this.buttonModificar = new System.Windows.Forms.Button();
             this.buttonEliminarLogico = new System.Windows.Forms.Button();
+            this.textBoxFiltro = new System.Windows.Forms.TextBox();
+            this.labelFiltro = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPokemons)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPokemon)).BeginInit();
             this.SuspendLayout();
@@ -151,12 +153,32 @@
             this.buttonEliminarLogico.UseVisualStyleBackColor = false;
             this.buttonEliminarLogico.Click += new System.EventHandler(this.buttonEliminarLogico_Click);
             // 
+            // textBoxFiltro
+            // 
+            this.textBoxFiltro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxFiltro.Location = new System.Drawing.Point(89, 17);
+            this.textBoxFiltro.Name = "textBoxFiltro";
+            this.textBoxFiltro.Size = new System.Drawing.Size(143, 20);
+            this.textBoxFiltro.TabIndex = 8;
+            this.textBoxFiltro.TextChanged += new System.EventHandler(this.textBoxFiltro_TextChanged);
+            // 
+            // labelFiltro
+            // 
+            this.labelFiltro.AutoSize = true;
+            this.labelFiltro.Location = new System.Drawing.Point(48, 20);
+            this.labelFiltro.Name = "labelFiltro";
+            this.labelFiltro.Size = new System.Drawing.Size(35, 13);
+            this.labelFiltro.TabIndex = 10;
+            this.labelFiltro.Text = "Filtrar:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(948, 462);
+            this.Controls.Add(this.labelFiltro);
+            this.Controls.Add(this.textBoxFiltro);
             this.Controls.Add(this.buttonEliminarLogico);
             this.Controls.Add(this.buttonModificar);
             this.Controls.Add(this.buttonSalir);
@@ -175,6 +197,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPokemons)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPokemon)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -187,6 +210,8 @@
         private System.Windows.Forms.Button buttonSalir;
         private System.Windows.Forms.Button buttonModificar;
         private System.Windows.Forms.Button buttonEliminarLogico;
+        private System.Windows.Forms.TextBox textBoxFiltro;
+        private System.Windows.Forms.Label labelFiltro;
     }
 }
 

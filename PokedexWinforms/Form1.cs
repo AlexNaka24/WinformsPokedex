@@ -63,10 +63,15 @@ namespace PokedexWinforms
             PokemonNegocio negocio = new PokemonNegocio();
             listaPokemons = negocio.listar();
             dataGridViewPokemons.DataSource = listaPokemons;
-            dataGridViewPokemons.Columns["UrlImagen"].Visible = false;
-            dataGridViewPokemons.Columns["Id"].Visible = false;
+            ocultarColumnas();
 
             pictureBoxPokemon.Load();
+        }
+
+        private void ocultarColumnas()
+        {
+            dataGridViewPokemons.Columns["Id"].Visible = false;
+            dataGridViewPokemons.Columns["UrlImagen"].Visible = false;
         }
 
         private void buttonSalir_Click(object sender, EventArgs e)
@@ -136,6 +141,21 @@ namespace PokedexWinforms
             {
                 MessageBox.Show("Seleccione algun pokemon");
             }
+        }
+
+        private void textBoxFiltro_TextChanged(object sender, EventArgs e)
+        {
+            List<Pokemon> listaFiltrada = new List<Pokemon>();
+
+            listaFiltrada = listaPokemons.FindAll(
+                x => x.Nombre.ToUpper().Contains(textBoxFiltro.Text.ToUpper()) ||
+                     x.Numero.ToString().Contains(textBoxFiltro.Text) ||
+                     x.Descripcion.ToUpper().Contains(textBoxFiltro.Text.ToUpper())
+            );
+
+            dataGridViewPokemons.DataSource = null;
+            dataGridViewPokemons.DataSource = listaFiltrada;
+            ocultarColumnas();
         }
     }   
 }
