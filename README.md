@@ -15,7 +15,7 @@ I built it as part of my learning journey in C# desktop development.
 + SQL Server
 
 **Data source**
-Data is sourced from my custom SQL Database
++ Data is sourced from my custom SQL Database
 
 This is my first app so there are lot of improvements to be made
 + Better UI
